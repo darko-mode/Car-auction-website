@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Auctions - AutoBid</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-inter bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-2xl font-bold text-blue-600">AutoBid</a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-blue-600">Home</a>
+                    <a href="auctions.html" class="text-gray-900 hover:text-blue-600 font-medium">Auctions</a>
+                    <a href="sell.html" class="text-gray-700 hover:text-blue-600">Sell</a>
+                    <a href="about.html" class="text-gray-700 hover:text-blue-600">About</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="login.html" class="text-gray-700 hover:text-blue-600">Login</a>
+                    <a href="login.html" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">Register</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="bg-white border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <h1 class="text-3xl font-bold text-gray-900">All Auctions</h1>
+            <p class="text-gray-600 mt-2">Browse all active car auctions</p>
+        </div>
+    </div>
+
+    <!-- Filters -->
+    <div class="bg-white border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Make</label>
+                    <select class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        <option>All Makes</option>
+                        <option>BMW</option>
+                        <option>Mercedes-Benz</option>
+                        <option>Porsche</option>
+                        <option>Tesla</option>
+                        <option>Audi</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Model</label>
+                    <select class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        <option>All Models</option>
+                        <option>911</option>
+                        <option>M3</option>
+                        <option>Model S</option>
+                        <option>C-Class</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Year</label>
+                    <select class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        <option>All Years</option>
+                        <option>2024</option>
+                        <option>2023</option>
+                        <option>2022</option>
+                        <option>2021</option>
+                        <option>2020</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Price Range</label>
+                    <select class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        <option>All Prices</option>
+                        <option>Under $25k</option>
+                        <option>$25k - $50k</option>
+                        <option>$50k - $100k</option>
+                        <option>Over $100k</option>
+                    </select>
+                </div>
+                <div class="flex items-end">
+                    <button class="w-full bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">Apply Filters</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Auction Grid -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Car Card 1 -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?w=400&h=250&fit=crop" alt="2020 Porsche 911" class="w-full h-48 object-cover">
+                    <div class="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold">2d 14h left</div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2">2020 Porsche 911 Carrera S</h3>
+                    <p class="text-gray-600 mb-4">15,420 miles • Manual • Excellent condition</p>
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <p class="text-sm text-gray-500">Current bid</p>
+                            <p class="text-2xl font-bold text-green-600">$89,500</p>
+                        </div>
+                        <a href="auction-detail.html" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">View</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Car Card 2 -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=400&h=250&fit=crop" alt="2019 BMW M3" class="w-full h-48 object-cover">
+                    <div class="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold">1d 8h left</div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2">2019 BMW M3 Competition</h3>
+                    <p class="text-gray-600 mb-4">22,100 miles • Automatic • Very good condition</p>
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <p class="text-sm text-gray-500">Current bid</p>
+                            <p class="text-2xl font-bold text-green-600">$52,750</p>
+                        </div>
+                        <a href="auction-detail.html" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">View</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Car Card 3 -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=400&h=250&fit=crop" alt="2021 Tesla Model S" class="w-full h-48 object-cover">
+                    <div class="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold">3d 2h left</div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2">2021 Tesla Model S Plaid</h3>
+                    <p class="text-gray-600 mb-4">8,900 miles • Electric • Excellent condition</p>
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <p class="text-sm text-gray-500">Current bid</p>
+                            <p class="text-2xl font-bold text-green-600">$95,000</p>
+                        </div>
+                        <a href="auction-detail.html" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">View</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Car Card 4 -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=400&h=250&fit=crop" alt="2022 Mercedes AMG GT" class="w-full h-48 object-cover">
+                    <div class="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold">5d 12h left</div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2">2022 Mercedes-AMG GT 63 S</h3>
+                    <p class="text-gray-600 mb-4">12,500 miles • Automatic • Excellent condition</p>
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <p class="text-sm text-gray-500">Current bid</p>
+                            <p class="text-2xl font-bold text-green-600">$125,000</p>
+                        </div>
+                        <a href="auction-detail.html" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">View</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Car Card 5 -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=400&h=250&fit=crop" alt="2021 Audi RS6" class="w-full h-48 object-cover">
+                    <div class="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold">4d 6h left</div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2">2021 Audi RS6 Avant</h3>
+                    <p class="text-gray-600 mb-4">18,200 miles • Automatic • Very good condition</p>
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <p class="text-sm text-gray-500">Current bid</p>
+                            <p class="text-2xl font-bold text-green-600">$78,900</p>
+                        </div>
+                        <a href="auction-detail.html" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">View</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Car Card 6 -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1617788138017-80ad40651399?w=400&h=250&fit=crop" alt="2020 Lamborghini Huracan" class="w-full h-48 object-cover">
+                    <div class="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold">6d 18h left</div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2">2020 Lamborghini Huracán EVO</h3>
+                    <p class="text-gray-600 mb-4">9,800 miles • Automatic • Excellent condition</p>
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <p class="text-sm text-gray-500">Current bid</p>
+                            <p class="text-2xl font-bold text-green-600">$185,000</p>
+                        </div>
+                        <a href="auction-detail.html" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">View</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t py-12 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">AutoBid</h3>
+                    <p class="text-gray-600">Premium car auctions for enthusiasts and collectors.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Buying</h4>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><a href="auctions.html" class="hover:text-blue-600">Browse Auctions</a></li>
+                        <li><a href="#" class="hover:text-blue-600">How to Bid</a></li>
+                        <li><a href="#" class="hover:text-blue-600">Buyer Protection</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Selling</h4>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><a href="sell.html" class="hover:text-blue-600">List Your Car</a></li>
+                        <li><a href="#" class="hover:text-blue-600">Seller Guide</a></li>
+                        <li><a href="#" class="hover:text-blue-600">Fees</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Support</h4>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><a href="about.html" class="hover:text-blue-600">About Us</a></li>
+                        <li><a href="contact.html" class="hover:text-blue-600">Contact</a></li>
+                        <li><a href="#" class="hover:text-blue-600">Help Center</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t mt-8 pt-8 text-center text-gray-600">
+                <p>&copy; 2024 AutoBid. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

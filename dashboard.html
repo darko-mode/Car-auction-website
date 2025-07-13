@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - AutoBid</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-inter bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-2xl font-bold text-blue-600">AutoBid</a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-blue-600">Home</a>
+                    <a href="auctions.html" class="text-gray-700 hover:text-blue-600">Auctions</a>
+                    <a href="sell.html" class="text-gray-700 hover:text-blue-600">Sell</a>
+                    <a href="about.html" class="text-gray-700 hover:text-blue-600">About</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="relative">
+                        <button class="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
+                            <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white text-sm font-semibold">JD</div>
+                            <span>John Doe</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Header -->
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold text-gray-900">Dashboard</h1>
+            <p class="text-gray-600 mt-2">Manage your auctions, bids, and watchlist</p>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <div class="flex items-center">
+                    <div class="p-2 bg-blue-100 rounded-lg">
+                        <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                        </svg>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm text-gray-500">Active Listings</p>
+                        <p class="text-2xl font-bold text-gray-900">2</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <div class="flex items-center">
+                    <div class="p-2 bg-green-100 rounded-lg">
+                        <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+                        </svg>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm text-gray-500">Active Bids</p>
+                        <p class="text-2xl font-bold text-gray-900">5</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <div class="flex items-center">
+                    <div class="p-2 bg-yellow-100 rounded-lg">
+                        <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                        </svg>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm text-gray-500">Watchlist</p>
+                        <p class="text-2xl font-bold text-gray-900">12</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <div class="flex items-center">
+                    <div class="p-2 bg-purple-100 rounded-lg">
+                        <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+                        </svg>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm text-gray-500">Won Auctions</p>
+                        <p class="text-2xl font-bold text-gray-900">3</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="bg-white rounded-xl shadow-lg">
+            <div class="border-b border-gray-200">
+                <nav class="flex space-x-8 px-6">
+                    <button onclick="showTab('listings')" id="listingsTab" class="py-4 px-1 border-b-2 border-blue-500 font-medium text-sm text-blue-600">My Listings</button>
+                    <button onclick="showTab('bids')" id="bidsTab" class="py-4 px-1 border-b-2 border-transparent font-medium text-sm text-gray-500 hover:text-gray-700">My Bids</button>
+                    <button onclick="showTab('watchlist')" id="watchlistTab" class="py-4 px-1 border-b-2 border-transparent font-medium text-sm text-gray-500 hover:text-gray-700">Watchlist</button>
+                </nav>
+            </div>
+
+            <!-- My Listings Tab -->
+            <div id="listingsContent" class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-xl font-semibold">My Listings</h2>
+                    <a href="sell.html" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">List New Car</a>
+                </div>
+                <div class="space-y-4">
+                    <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition">
+                        <div class="flex items-center space-x-4">
+                            <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?w=100&h=75&fit=crop" alt="2020 Porsche 911" class="w-20 h-15 object-cover rounded">
+                            <div class="flex-1">
+                                <h3 class="font-semibold">2020 Porsche 911 Carrera S</h3>
+                                <p class="text-sm text-gray-600">Listed 3 days ago • Ends in 2d 14h</p>
+                                <div class="flex items-center space-x-4 mt-2">
+                                    <span class="text-sm text-gray-500">Current bid: <span class="font-semibold text-green-600">$89,500</span></span>
+                                    <span class="text-sm text-gray-500">23 bids</span>
+                                </div>
+                            </div>
+                            <div class="flex space-x-2">
+                                <button class="text-blue-600 hover:text-blue-800 text-sm">Edit</button>
+                                <button class="text-red-600 hover:text-red-800 text-sm">End Early</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition">
+                        <div class="flex items-center space-x-4">
+                            <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=100&h=75&fit=crop" alt="2019 BMW M3" class="w-20 h-15 object-cover rounded">
+                            <div class="flex-1">
+                                <h3 class="font-semibold">2019 BMW M3 Competition</h3>
+                                <p class="text-sm text-gray-600">Listed 1 day ago • Ends in 6d 8h</p>
+                                <div class="flex items-center space-x-4 mt-2">
+                                    <span class="text-sm text-gray-500">Current bid: <span class="font-semibold text-green-600">$52,750</span></span>
+                                    <span class="text-sm text-gray-500">15 bids</span>
+                                </div>
+                            </div>
+                            <div class="flex space-x-2">
+                                <button class="text-blue-600 hover:text-blue-800 text-sm">Edit</button>
+                                <button class="text-red-600 hover:text-red-800 text-sm">End Early</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- My Bids Tab -->
+            <div id="bidsContent" class="p-6 hidden">
+                <h2 class="text-xl font-semibold mb-6">My Bids</h2>
+                <div class="space-y-4">
+                    <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition">
+                        <div class="flex items-center space-x-4">
+                            <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=100&h=75&fit=crop" alt="2021 Tesla Model S" class="w-20 h-15 object-cover rounded">
+                            <div class="flex-1">
+                                <h3 class="font-semibold">2021 Tesla Model S Plaid</h3>
+                                <p class="text-sm text-gray-600">Ends in 3d 2h</p>
+                                <div class="flex items-center space-x-4 mt-2">
+                                    <span class="text-sm text-gray-500">Your bid: <span class="font-semibold text-blue-600">$92,000</span></span>
+                                    <span class="text-sm text-gray-500">Current high: <span class="font-semibold text-green-600">$95,000</span></span>
+                                    <span class="px-2 py-1 bg-red-100 text-red-800 text-xs rounded-full">Outbid</span>
+                                </div>
+                            </div>
+                            <div class="flex space-x-2">
+                                <button class="bg-blue-600 text-white px-3 py-1 rounded text-sm hover:bg-blue-700 transition">Increase Bid</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition">
+                        <div class="flex items-center space-x-4">
+                            <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=100&h=75&fit=crop" alt="2022 Mercedes AMG GT" class="w-20 h-15 object-cover rounded">
+                            <div class="flex-1">
+                                <h3 class="font-semibold">2022 Mercedes-AMG GT 63 S</h3>
+                                <p class="text-sm text-gray-600">Ends in 5d 12h</p>
+                                <div class="flex items-center space-x-4 mt-2">
+                                    <span class="text-sm text-gray-500">Your bid: <span class="font-semibold text-blue-600">$125,000</span></span>
+                                    <span class="text-sm text-gray-500">Current high: <span class="font-semibold text-green-600">$125,000</span></span>
+                                    <span class="px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full">Winning</span>
+                                </div>
+                            </div>
+                            <div class="flex space-x-2">
+                                <button class="bg-blue-600 text-white px-3 py-1 rounded text-sm hover:bg-blue-700 transition">Increase Bid</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Watchlist Tab -->
+            <div id="watchlistContent" class="p-6 hidden">
+                <h2 class="text-xl font-semibold mb-6">Watchlist</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition">
+                        <img src="https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=300&h=200&fit=crop" alt="2021 Audi RS6" class="w-full h-32 object-cover rounded mb-3">
+                        <h3 class="font-semibold mb-1">2021 Audi RS6 Avant</h3>
+                        <p class="text-sm text-gray-600 mb-2">Ends in 4d 6h</p>
+                        <p class="text-lg font-bold text-green-600">$78,900</p>
+                        <div class="flex space-x-2 mt-3">
+                            <button class="flex-1 bg-blue-600 text-white py-1 px-3 rounded text-sm hover:bg-blue-700 transition">Bid Now</button>
+                            <button class="text-red-600 hover:text-red-800 text-sm">Remove</button>
+                        </div>
+                    </div>
+                    <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition">
+                        <img src="https://images.unsplash.com/photo-1617788138017-80ad40651399?w=300&h=200&fit=crop" alt="2020 Lamborghini Huracan" class="w-full h-32 object-cover rounded mb-3">
+                        <h3 class="font-semibold mb-1">2020 Lamborghini Huracán EVO</h3>
+                        <p class="text-sm text-gray-600 mb-2">Ends in 6d 18h</p>
+                        <p class="text-lg font-bold text-green-600">$185,000</p>
+                        <div class="flex space-x-2 mt-3">
+                            <button class="flex-1 bg-blue-600 text-white py-1 px-3 rounded text-sm hover:bg-blue-700 transition">Bid Now</button>
+                            <button class="text-red-600 hover:text-red-800 text-sm">Remove</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t py-12 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">AutoBid</h3>
+                    <p class="text-gray-600">Premium car auctions for enthusiasts and collectors.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Buying</h4>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><a href="auctions.html" class="hover:text-blue-600">Browse Auctions</a></li>
+                        <li><a href="#" class="hover:text-blue-600">How to Bid</a></li>
+                        <li><a href="#" class="hover:text-blue-600">Buyer Protection</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Selling</h4>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><a href="sell.html" class="hover:text-blue-600">List Your Car</a></li>
+                        <li><a href="#" class="hover:text-blue-600">Seller Guide</a></li>
+                        <li><a href="#" class="hover:text-blue-600">Fees</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Support</h4>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><a href="about.html" class="hover:text-blue-600">About Us</a></li>
+                        <li><a href="contact.html" class="hover:text-blue-600">Contact</a></li>
+                        <li><a href="#" class="hover:text-blue-600">Help Center</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t mt-8 pt-8 text-center text-gray-600">
+                <p>&copy; 2024 AutoBid. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function showTab(tabName) {
+            // Hide all content
+            document.getElementById('listingsContent').classList.add('hidden');
+            document.getElementById('bidsContent').classList.add('hidden');
+            document.getElementById('watchlistContent').classList.add('hidden');
+            
+            // Remove active styles from all tabs
+            document.getElementById('listingsTab').classList.remove('border-blue-500', 'text-blue-600');
+            document.getElementById('listingsTab').classList.add('border-transparent', 'text-gray-500');
+            document.getElementById('bidsTab').classList.remove('border-blue-500', 'text-blue-600');
+            document.getElementById('bidsTab').classList.add('border-transparent', 'text-gray-500');
+            document.getElementById('watchlistTab').classList.remove('border-blue-500', 'text-blue-600');
+            document.getElementById('watchlistTab').classList.add('border-transparent', 'text-gray-500');
+            
+            // Show selected content and activate tab
+            document.getElementById(tabName + 'Content').classList.remove('hidden');
+            document.getElementById(tabName + 'Tab').classList.remove('border-transparent', 'text-gray-500');
+            document.getElementById(tabName + 'Tab').classList.add('border-blue-500', 'text-blue-600');
+        }
+    </script>
+</body>
+</html>

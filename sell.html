@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sell Your Car - AutoBid</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-inter bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-2xl font-bold text-blue-600">AutoBid</a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-blue-600">Home</a>
+                    <a href="auctions.html" class="text-gray-700 hover:text-blue-600">Auctions</a>
+                    <a href="sell.html" class="text-gray-900 hover:text-blue-600 font-medium">Sell</a>
+                    <a href="about.html" class="text-gray-700 hover:text-blue-600">About</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="login.html" class="text-gray-700 hover:text-blue-600">Login</a>
+                    <a href="login.html" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">Register</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl font-bold mb-4">List Your Car for Auction</h1>
+            <p class="text-xl">Reach thousands of qualified buyers and get the best price for your vehicle</p>
+        </div>
+    </div>
+
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="bg-white rounded-xl shadow-lg p-8">
+            <form class="space-y-8">
+                <!-- Basic Information -->
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">Basic Information</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Listing Title *</label>
+                            <input type="text" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="e.g., 2020 Porsche 911 Carrera S">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Make *</label>
+                            <select required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                <option value="">Select Make</option>
+                                <option>Audi</option>
+                                <option>BMW</option>
+                                <option>Ferrari</option>
+                                <option>Lamborghini</option>
+                                <option>Mercedes-Benz</option>
+                                <option>Porsche</option>
+                                <option>Tesla</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Model *</label>
+                            <input type="text" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="e.g., 911">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Year *</label>
+                            <select required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                <option value="">Select Year</option>
+                                <option>2024</option>
+                                <option>2023</option>
+                                <option>2022</option>
+                                <option>2021</option>
+                                <option>2020</option>
+                                <option>2019</option>
+                                <option>2018</option>
+                                <option>2017</option>
+                                <option>2016</option>
+                                <option>2015</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Mileage *</label>
+                            <input type="number" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="e.g., 15420">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Transmission *</label>
+                            <select required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                <option value="">Select Transmission</option>
+                                <option>Manual</option>
+                                <option>Automatic</option>
+                                <option>CVT</option>
+                                <option>Semi-Automatic</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vehicle Details -->
+                <div class="border-t pt-8">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">Vehicle Details</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Exterior Color</label>
+                            <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="e.g., Guards Red">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Interior Color</label>
+                            <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="e.g., Black Leather">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Engine</label>
+                            <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="e.g., 3.0L Twin-Turbo H6">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Drivetrain</label>
+                            <select class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                <option value="">Select Drivetrain</option>
+                                <option>Front-Wheel Drive</option>
+                                <option>Rear-Wheel Drive</option>
+                                <option>All-Wheel Drive</option>
+                                <option>4WD</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">VIN</label>
+                            <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="17-character VIN">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Condition *</label>
+                            <select required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                <option value="">Select Condition</option>
+                                <option>Excellent</option>
+                                <option>Very Good</option>
+                                <option>Good</option>
+                                <option>Fair</option>
+                                <option>Poor</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Description -->
+                <div class="border-t pt-8">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">Description</h2>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Detailed Description *</label>
+                        <textarea required rows="6" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-none" placeholder="Provide a detailed description of your vehicle, including its history, condition, modifications, service records, and any other relevant information that would interest potential buyers..."></textarea>
+                        <p class="text-sm text-gray-500 mt-2">Be thorough and honest. Great descriptions lead to better bids.</p>
+                    </div>
+                </div>
+
+                <!-- Images -->
+                <div class="border-t pt-8">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">Photos</h2>
+                    <div class="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-blue-400 transition">
+                        <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48">
+                            <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <div class="mt-4">
+                            <label for="file-upload" class="cursor-pointer">
+                                <span class="mt-2 block text-sm font-medium text-gray-900">Upload photos of your vehicle</span>
+                                <input id="file-upload" name="file-upload" type="file" class="sr-only" multiple accept="image/*">
+                            </label>
+                            <p class="mt-1 text-sm text-gray-500">PNG, JPG, GIF up to 10MB each. Maximum 20 photos.</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-600 mt-4">
+                        <strong>Photo Tips:</strong> Include exterior shots from all angles, interior photos, engine bay, wheels, and any unique features or flaws. High-quality photos significantly increase bidding activity.
+                    </p>
+                </div>
+
+                <!-- Auction Settings -->
+                <div class="border-t pt-8">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">Auction Settings</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Starting Bid *</label>
+                            <div class="relative">
+                                <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">$</span>
+                                <input type="number" required class="w-full pl-8 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="1000">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Reserve Price (Optional)</label>
+                            <div class="relative">
+                                <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">$</span>
+                                <input type="number" class="w-full pl-8 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="50000">
+                            </div>
+                            <p class="text-sm text-gray-500 mt-1">Minimum price you'll accept. Hidden from bidders.</p>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Auction Duration *</label>
+                            <select required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                <option value="">Select Duration</option>
+                                <option>3 Days</option>
+                                <option>5 Days</option>
+                                <option>7 Days</option>
+                                <option>10 Days</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Location *</label>
+                            <input type="text" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="City, State">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Terms and Submit -->
+                <div class="border-t pt-8">
+                    <div class="flex items-start space-x-3 mb-6">
+                        <input id="terms" type="checkbox" required class="mt-1 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                        <label for="terms" class="text-sm text-gray-700">
+                            I agree to the <a href="#" class="text-blue-600 hover:text-blue-500">Terms of Service</a>, 
+                            <a href="#" class="text-blue-600 hover:text-blue-500">Seller Agreement</a>, and confirm that all information provided is accurate. 
+                            I understand that AutoBid charges a 5% seller fee upon successful sale.
+                        </label>
+                    </div>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button type="button" class="flex-1 border border-gray-300 text-gray-700 py-3 px-6 rounded-lg font-semibold hover:bg-gray-50 transition">
+                            Save as Draft
+                        </button>
+                        <button type="submit" class="flex-1 bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition">
+                            Submit for Review
+                        </button>
+                    </div>
+                    
+                    <p class="text-sm text-gray-600 mt-4 text-center">
+                        Your listing will be reviewed within 24 hours before going live.
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">AutoBid</h3>
+                    <p class="text-gray-600">Premium car auctions for enthusiasts and collectors.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Buying</h4>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><a href="auctions.html" class="hover:text-blue-600">Browse Auctions</a></li>
+                        <li><a href="#" class="hover:text-blue-600">How to Bid</a></li>
+                        <li><a href="#" class="hover:text-blue-600">Buyer Protection</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Selling</h4>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><a href="sell.html" class="hover:text-blue-600">List Your Car</a></li>
+                        <li><a href="#" class="hover:text-blue-600">Seller Guide</a></li>
+                        <li><a href="#" class="hover:text-blue-600">Fees</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Support</h4>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><a href="about.html" class="hover:text-blue-600">About Us</a></li>
+                        <li><a href="contact.html" class="hover:text-blue-600">Contact</a></li>
+                        <li><a href="#" class="hover:text-blue-600">Help Center</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t mt-8 pt-8 text-center text-gray-600">
+                <p>&copy; 2024 AutoBid. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
