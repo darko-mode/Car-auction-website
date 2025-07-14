@@ -12,29 +12,79 @@
                 extend: {
                     fontFamily: {
                         'inter': ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.8s ease-out',
+                        'slide-up': 'slideUp 0.6s ease-out',
+                        'scale-in': 'scaleIn 0.5s ease-out',
+                        'pulse-slow': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        scaleIn: {
+                            '0%': { opacity: '0', transform: 'scale(0.9)' },
+                            '100%': { opacity: '1', transform: 'scale(1)' },
+                        },
                     }
                 }
             }
         }
     </script>
+    <style>
+        .glow-text {
+            text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+        }
+        .glow {
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+        }
+        .glow-button {
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+        }
+        .glow-button:hover {
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+        }
+        .glass-card {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+    </style>
 </head>
-<body class="font-inter bg-gray-50">
+<body class="font-inter bg-black min-h-screen">
     <!-- Navigation -->
-    <nav class="bg-white shadow-sm border-b">
+    <nav class="bg-black/20 backdrop-blur-xl border-b border-white/10 sticky top-0 z-50 transition-all duration-300 shadow-2xl">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center">
-                    <a href="index.html" class="text-2xl font-bold text-blue-600">AutoBid</a>
+                    <a href="index.html" class="text-2xl font-bold text-blue-400 hover:scale-105 transition-transform duration-300 glow-text">AutoBid</a>
                 </div>
                 <div class="hidden md:flex space-x-8">
-                    <a href="index.html" class="text-gray-700 hover:text-blue-600">Home</a>
-                    <a href="auctions.html" class="text-gray-700 hover:text-blue-600">Auctions</a>
-                    <a href="sell.html" class="text-gray-700 hover:text-blue-600">Sell</a>
-                    <a href="about.html" class="text-gray-700 hover:text-blue-600">About</a>
+                    <a href="index.html" class="text-gray-300 hover:text-blue-400 relative group transition-colors duration-300">
+                        Home
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 group-hover:w-full transition-all duration-300 glow"></span>
+                    </a>
+                    <a href="auctions.html" class="text-gray-300 hover:text-blue-400 relative group transition-colors duration-300">
+                        Auctions
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 group-hover:w-full transition-all duration-300 glow"></span>
+                    </a>
+                    <a href="sell.html" class="text-gray-300 hover:text-blue-400 relative group transition-colors duration-300">
+                        Sell
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 group-hover:w-full transition-all duration-300 glow"></span>
+                    </a>
+                    <a href="about.html" class="text-gray-300 hover:text-blue-400 relative group transition-colors duration-300">
+                        About
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 group-hover:w-full transition-all duration-300 glow"></span>
+                    </a>
                 </div>
                 <div class="flex items-center space-x-4">
-                    <a href="login.html" class="text-gray-700 hover:text-blue-600">Login</a>
-                    <a href="login.html" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">Register</a>
+                    <a href="login.html" class="text-gray-300 hover:text-blue-400 transition-colors duration-300">Login</a>
+                    <a href="login.html" class="bg-gradient-to-r from-blue-500 to-indigo-600 hover:brightness-110 text-white px-5 py-2 rounded-lg shadow-md transition hover:scale-105 hover:shadow-lg">Register</a>
                 </div>
             </div>
         </div>
@@ -45,121 +95,122 @@
             <!-- Left Column - Images and Details -->
             <div class="lg:col-span-2">
                 <!-- Image Gallery -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden mb-8">
-                    <div class="relative">
-                        <img id="mainImage" src="https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&h=500&fit=crop" alt="2020 Porsche 911" class="w-full h-96 object-cover">
-                        <div class="absolute top-4 left-4 bg-red-500 text-white px-4 py-2 rounded-full font-semibold">
+                <div class="bg-black/40 backdrop-blur-xl border border-white/10 rounded-xl shadow-2xl overflow-hidden mb-8 animate-fade-in glass-card">
+                    <div class="relative group">
+                        <img id="mainImage" src="https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&h=500&fit=crop" alt="2020 Porsche 911" class="w-full h-96 object-cover transition-transform duration-500 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <span class="absolute top-4 left-4 bg-red-500/80 text-white text-xs px-3 py-1 rounded-full shadow-sm backdrop-blur">
                             Auction ends in 2d 14h 23m
-                        </div>
+                        </span>
                     </div>
                     <div class="p-4">
                         <div class="grid grid-cols-4 gap-2">
-                            <img onclick="changeImage(this.src)" src="https://images.unsplash.com/photo-1555215695-3004980ad54e?w=200&h=150&fit=crop" alt="View 1" class="w-full h-20 object-cover rounded cursor-pointer hover:opacity-75 transition">
-                            <img onclick="changeImage(this.src)" src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=200&h=150&fit=crop" alt="View 2" class="w-full h-20 object-cover rounded cursor-pointer hover:opacity-75 transition">
-                            <img onclick="changeImage(this.src)" src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=200&h=150&fit=crop" alt="View 3" class="w-full h-20 object-cover rounded cursor-pointer hover:opacity-75 transition">
-                            <img onclick="changeImage(this.src)" src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=200&h=150&fit=crop" alt="View 4" class="w-full h-20 object-cover rounded cursor-pointer hover:opacity-75 transition">
+                            <img onclick="changeImage(this.src)" src="https://images.unsplash.com/photo-1555215695-3004980ad54e?w=200&h=150&fit=crop" alt="View 1" class="w-full h-20 object-cover rounded cursor-pointer hover:opacity-75 hover:scale-105 transition-all duration-300 border-2 border-transparent hover:border-blue-400">
+                            <img onclick="changeImage(this.src)" src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=200&h=150&fit=crop" alt="View 2" class="w-full h-20 object-cover rounded cursor-pointer hover:opacity-75 hover:scale-105 transition-all duration-300 border-2 border-transparent hover:border-blue-400">
+                            <img onclick="changeImage(this.src)" src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=200&h=150&fit=crop" alt="View 3" class="w-full h-20 object-cover rounded cursor-pointer hover:opacity-75 hover:scale-105 transition-all duration-300 border-2 border-transparent hover:border-blue-400">
+                            <img onclick="changeImage(this.src)" src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=200&h=150&fit=crop" alt="View 4" class="w-full h-20 object-cover rounded cursor-pointer hover:opacity-75 hover:scale-105 transition-all duration-300 border-2 border-transparent hover:border-blue-400">
                         </div>
                     </div>
                 </div>
 
                 <!-- Car Details -->
-                <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
-                    <h1 class="text-3xl font-bold text-gray-900 mb-6">2020 Porsche 911 Carrera S</h1>
+                <div class="bg-black/40 backdrop-blur-xl border border-white/10 rounded-xl shadow-2xl p-8 mb-8 animate-slide-up glass-card">
+                    <h1 class="text-3xl font-bold text-white mb-6 animate-fade-in glow-text">2020 Porsche 911 Carrera S</h1>
                     
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
                         <div>
-                            <p class="text-sm text-gray-500">Year</p>
-                            <p class="text-lg font-semibold">2020</p>
+                            <p class="text-sm text-gray-400">Year</p>
+                            <p class="text-lg font-semibold text-white">2020</p>
                         </div>
                         <div>
-                            <p class="text-sm text-gray-500">Mileage</p>
-                            <p class="text-lg font-semibold">15,420 miles</p>
+                            <p class="text-sm text-gray-400">Mileage</p>
+                            <p class="text-lg font-semibold text-white">15,420 miles</p>
                         </div>
                         <div>
-                            <p class="text-sm text-gray-500">Transmission</p>
-                            <p class="text-lg font-semibold">7-Speed Manual</p>
+                            <p class="text-sm text-gray-400">Transmission</p>
+                            <p class="text-lg font-semibold text-white">7-Speed Manual</p>
                         </div>
                         <div>
-                            <p class="text-sm text-gray-500">Condition</p>
-                            <p class="text-lg font-semibold text-green-600">Excellent</p>
+                            <p class="text-sm text-gray-400">Condition</p>
+                            <p class="text-lg font-semibold text-green-400">Excellent</p>
                         </div>
                     </div>
 
-                    <div class="border-t pt-6">
-                        <h3 class="text-xl font-semibold mb-4">Description</h3>
-                        <p class="text-gray-700 leading-relaxed">
+                    <div class="border-t border-white/10 pt-6">
+                        <h3 class="text-xl font-semibold mb-4 text-white">Description</h3>
+                        <p class="text-gray-300 leading-relaxed">
                             This stunning 2020 Porsche 911 Carrera S is a true enthusiast's dream. Finished in Guards Red with a black leather interior, this 992-generation 911 features the coveted 7-speed manual transmission - increasingly rare in today's market. The car has been meticulously maintained with full service records and shows beautifully throughout.
                         </p>
-                        <p class="text-gray-700 leading-relaxed mt-4">
+                        <p class="text-gray-300 leading-relaxed mt-4">
                             Key features include Sport Chrono Package, PASM adaptive suspension, 20-inch Carrera S wheels, premium leather interior, and Porsche Communication Management with navigation. This is an exceptional example of the modern 911 with the pure driving experience that only a manual transmission can provide.
                         </p>
                     </div>
 
-                    <div class="border-t pt-6 mt-6">
-                        <h3 class="text-xl font-semibold mb-4">Specifications</h3>
+                    <div class="border-t border-white/10 pt-6 mt-6">
+                        <h3 class="text-xl font-semibold mb-4 text-white">Specifications</h3>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div class="flex justify-between py-2 border-b border-gray-100">
-                                <span class="text-gray-600">Engine</span>
-                                <span class="font-medium">3.0L Twin-Turbo H6</span>
+                            <div class="flex justify-between py-2 border-b border-white/10">
+                                <span class="text-gray-400">Engine</span>
+                                <span class="font-medium text-white">3.0L Twin-Turbo H6</span>
                             </div>
-                            <div class="flex justify-between py-2 border-b border-gray-100">
-                                <span class="text-gray-600">Power</span>
-                                <span class="font-medium">443 HP / 390 lb-ft</span>
+                            <div class="flex justify-between py-2 border-b border-white/10">
+                                <span class="text-gray-400">Power</span>
+                                <span class="font-medium text-white">443 HP / 390 lb-ft</span>
                             </div>
-                            <div class="flex justify-between py-2 border-b border-gray-100">
-                                <span class="text-gray-600">Drivetrain</span>
-                                <span class="font-medium">Rear-Wheel Drive</span>
+                            <div class="flex justify-between py-2 border-b border-white/10">
+                                <span class="text-gray-400">Drivetrain</span>
+                                <span class="font-medium text-white">Rear-Wheel Drive</span>
                             </div>
-                            <div class="flex justify-between py-2 border-b border-gray-100">
-                                <span class="text-gray-600">Exterior Color</span>
-                                <span class="font-medium">Guards Red</span>
+                            <div class="flex justify-between py-2 border-b border-white/10">
+                                <span class="text-gray-400">Exterior Color</span>
+                                <span class="font-medium text-white">Guards Red</span>
                             </div>
-                            <div class="flex justify-between py-2 border-b border-gray-100">
-                                <span class="text-gray-600">Interior Color</span>
-                                <span class="font-medium">Black Leather</span>
+                            <div class="flex justify-between py-2 border-b border-white/10">
+                                <span class="text-gray-400">Interior Color</span>
+                                <span class="font-medium text-white">Black Leather</span>
                             </div>
-                            <div class="flex justify-between py-2 border-b border-gray-100">
-                                <span class="text-gray-600">VIN</span>
-                                <span class="font-medium">WP0AB2A9XLS******</span>
+                            <div class="flex justify-between py-2 border-b border-white/10">
+                                <span class="text-gray-400">VIN</span>
+                                <span class="font-medium text-white">WP0AB2A9XLS******</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Comments Section -->
-                <div class="bg-white rounded-xl shadow-lg p-8">
-                    <h3 class="text-xl font-semibold mb-6">Comments & Questions</h3>
+                <div class="bg-black/40 backdrop-blur-xl border border-white/10 rounded-xl shadow-2xl p-8 glass-card">
+                    <h3 class="text-xl font-semibold mb-6 text-white">Comments & Questions</h3>
                     
                     <!-- Comment Form -->
-                    <div class="mb-8 p-4 bg-gray-50 rounded-lg">
-                        <textarea placeholder="Ask a question or leave a comment..." class="w-full p-3 border border-gray-300 rounded-lg resize-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" rows="3"></textarea>
-                        <button class="mt-3 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">Post Comment</button>
+                    <div class="mb-8 p-4 bg-black/60 border border-white/10 rounded-lg backdrop-blur-md">
+                        <textarea placeholder="Ask a question or leave a comment..." class="w-full p-3 bg-black/60 border border-white/20 rounded-lg resize-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white backdrop-blur-md" rows="3"></textarea>
+                        <button class="mt-3 bg-gradient-to-r from-blue-500 to-indigo-600 hover:brightness-110 text-white px-5 py-2 rounded-lg shadow-md transition hover:scale-105 hover:shadow-lg">Post Comment</button>
                     </div>
 
                     <!-- Sample Comments -->
                     <div class="space-y-6">
-                        <div class="border-b border-gray-100 pb-6">
+                        <div class="border-b border-white/10 pb-6">
                             <div class="flex items-start space-x-3">
                                 <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-semibold">JD</div>
                                 <div class="flex-1">
                                     <div class="flex items-center space-x-2 mb-1">
-                                        <span class="font-semibold">John_Doe_911</span>
-                                        <span class="text-sm text-gray-500">2 hours ago</span>
+                                        <span class="font-semibold text-white">John_Doe_911</span>
+                                        <span class="text-sm text-gray-400">2 hours ago</span>
                                     </div>
-                                    <p class="text-gray-700">Beautiful example! Any paint correction or clear bra? Service records available?</p>
+                                    <p class="text-gray-300">Beautiful example! Any paint correction or clear bra? Service records available?</p>
                                 </div>
                             </div>
                         </div>
                         
-                        <div class="border-b border-gray-100 pb-6">
+                        <div class="border-b border-white/10 pb-6">
                             <div class="flex items-start space-x-3">
                                 <div class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center text-white font-semibold">MC</div>
                                 <div class="flex-1">
                                     <div class="flex items-center space-x-2 mb-1">
-                                        <span class="font-semibold">MotorCollector</span>
-                                        <span class="text-sm text-gray-500">5 hours ago</span>
+                                        <span class="font-semibold text-white">MotorCollector</span>
+                                        <span class="text-sm text-gray-400">5 hours ago</span>
                                     </div>
-                                    <p class="text-gray-700">Fantastic to see a manual transmission 992! GLWS - this should bring strong money.</p>
+                                    <p class="text-gray-300">Fantastic to see a manual transmission 992! GLWS - this should bring strong money.</p>
                                 </div>
                             </div>
                         </div>
@@ -170,64 +221,64 @@
             <!-- Right Column - Bidding -->
             <div class="lg:col-span-1">
                 <!-- Bidding Box -->
-                <div class="bg-white rounded-xl shadow-lg p-6 sticky top-4">
+                <div class="bg-black/40 backdrop-blur-xl border border-white/10 rounded-xl shadow-2xl p-6 sticky top-4 animate-scale-in glass-card">
                     <div class="text-center mb-6">
-                        <p class="text-sm text-gray-500">Current Bid</p>
-                        <p class="text-4xl font-bold text-green-600">$89,500</p>
-                        <p class="text-sm text-gray-500 mt-1">23 bids</p>
+                        <p class="text-sm text-gray-400">Current Bid</p>
+                        <p class="text-4xl font-bold text-green-400 animate-pulse-slow glow-text">$89,500</p>
+                        <p class="text-sm text-gray-400 mt-1">23 bids</p>
                     </div>
 
                     <div class="mb-6">
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Your Bid</label>
+                        <label class="block text-sm font-medium text-gray-300 mb-2">Your Bid</label>
                         <div class="relative">
-                            <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">$</span>
-                            <input type="number" placeholder="90000" class="w-full pl-8 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                            <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">$</span>
+                            <input type="number" placeholder="90000" class="w-full pl-8 pr-4 py-3 bg-black/60 border border-white/20 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white backdrop-blur-md">
                         </div>
-                        <p class="text-xs text-gray-500 mt-1">Minimum bid: $90,000</p>
+                        <p class="text-xs text-gray-400 mt-1">Minimum bid: $90,000</p>
                     </div>
 
-                    <button class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition mb-4">
+                    <button class="w-full bg-gradient-to-r from-blue-500 to-indigo-600 hover:brightness-110 text-white py-3 rounded-lg font-semibold shadow-md transition mb-4 hover:scale-105 hover:shadow-xl">
                         Place Bid
                     </button>
 
-                    <button class="w-full border border-gray-300 text-gray-700 py-3 rounded-lg font-semibold hover:bg-gray-50 transition mb-6">
+                    <button class="w-full bg-gradient-to-r from-gray-600 to-gray-700 hover:brightness-110 text-white py-3 rounded-lg font-semibold shadow-md transition mb-6 hover:scale-105 hover:shadow-lg">
                         Add to Watchlist
                     </button>
 
                     <!-- Bid History -->
-                    <div class="border-t pt-6">
-                        <h4 class="font-semibold mb-4">Recent Bids</h4>
+                    <div class="border-t border-white/10 pt-6">
+                        <h4 class="font-semibold mb-4 text-white">Recent Bids</h4>
                         <div class="space-y-3">
                             <div class="flex justify-between items-center">
-                                <span class="text-sm text-gray-600">User***23</span>
-                                <span class="font-semibold">$89,500</span>
+                                <span class="text-sm text-gray-400">User***23</span>
+                                <span class="font-semibold text-white">$89,500</span>
                             </div>
                             <div class="flex justify-between items-center">
-                                <span class="text-sm text-gray-600">Collector***</span>
-                                <span class="font-semibold">$87,000</span>
+                                <span class="text-sm text-gray-400">Collector***</span>
+                                <span class="font-semibold text-white">$87,000</span>
                             </div>
                             <div class="flex justify-between items-center">
-                                <span class="text-sm text-gray-600">Speed***99</span>
-                                <span class="font-semibold">$85,500</span>
+                                <span class="text-sm text-gray-400">Speed***99</span>
+                                <span class="font-semibold text-white">$85,500</span>
                             </div>
                             <div class="flex justify-between items-center">
-                                <span class="text-sm text-gray-600">Auto***77</span>
-                                <span class="font-semibold">$82,000</span>
+                                <span class="text-sm text-gray-400">Auto***77</span>
+                                <span class="font-semibold text-white">$82,000</span>
                             </div>
                         </div>
                     </div>
 
                     <!-- Seller Info -->
-                    <div class="border-t pt-6 mt-6">
-                        <h4 class="font-semibold mb-4">Seller Information</h4>
+                    <div class="border-t border-white/10 pt-6 mt-6">
+                        <h4 class="font-semibold mb-4 text-white">Seller Information</h4>
                         <div class="flex items-center space-x-3 mb-3">
                             <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white font-semibold">PS</div>
                             <div>
-                                <p class="font-semibold">PorscheSeller</p>
-                                <p class="text-sm text-gray-500">Member since 2019</p>
+                                <p class="font-semibold text-white">PorscheSeller</p>
+                                <p class="text-sm text-gray-400">Member since 2019</p>
                             </div>
                         </div>
-                        <div class="text-sm text-gray-600">
+                        <div class="text-sm text-gray-300">
                             <p>✓ 47 successful sales</p>
                             <p>✓ 98% positive feedback</p>
                             <p>✓ Verified seller</p>
@@ -239,39 +290,39 @@
     </div>
 
     <!-- Footer -->
-    <footer class="bg-white border-t py-12 mt-16">
+    <footer class="bg-black/40 backdrop-blur-xl border-t border-white/10 py-12 mt-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div>
-                    <h3 class="text-lg font-semibold mb-4">AutoBid</h3>
-                    <p class="text-gray-600">Premium car auctions for enthusiasts and collectors.</p>
+                    <h3 class="text-lg font-semibold mb-4 text-blue-400 glow-text">AutoBid</h3>
+                    <p class="text-gray-300">Premium car auctions for enthusiasts and collectors.</p>
                 </div>
                 <div>
-                    <h4 class="font-semibold mb-4">Buying</h4>
-                    <ul class="space-y-2 text-gray-600">
-                        <li><a href="auctions.html" class="hover:text-blue-600">Browse Auctions</a></li>
-                        <li><a href="#" class="hover:text-blue-600">How to Bid</a></li>
-                        <li><a href="#" class="hover:text-blue-600">Buyer Protection</a></li>
+                    <h4 class="font-semibold mb-4 text-white">Buying</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="auctions.html" class="hover:text-blue-400 transition-colors duration-300">Browse Auctions</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition-colors duration-300">How to Bid</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition-colors duration-300">Buyer Protection</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-semibold mb-4">Selling</h4>
-                    <ul class="space-y-2 text-gray-600">
-                        <li><a href="sell.html" class="hover:text-blue-600">List Your Car</a></li>
-                        <li><a href="#" class="hover:text-blue-600">Seller Guide</a></li>
-                        <li><a href="#" class="hover:text-blue-600">Fees</a></li>
+                    <h4 class="font-semibold mb-4 text-white">Selling</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="sell.html" class="hover:text-blue-400 transition-colors duration-300">List Your Car</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition-colors duration-300">Seller Guide</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition-colors duration-300">Fees</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-semibold mb-4">Support</h4>
-                    <ul class="space-y-2 text-gray-600">
-                        <li><a href="about.html" class="hover:text-blue-600">About Us</a></li>
-                        <li><a href="contact.html" class="hover:text-blue-600">Contact</a></li>
-                        <li><a href="#" class="hover:text-blue-600">Help Center</a></li>
+                    <h4 class="font-semibold mb-4 text-white">Support</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="about.html" class="hover:text-blue-400 transition-colors duration-300">About Us</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition-colors duration-300">Contact</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition-colors duration-300">Help Center</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="border-t mt-8 pt-8 text-center text-gray-600">
+            <div class="border-t border-white/10 mt-8 pt-8 text-center text-gray-400">
                 <p>&copy; 2024 AutoBid. All rights reserved.</p>
             </div>
         </div>

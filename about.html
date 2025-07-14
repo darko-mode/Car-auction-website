@@ -8,52 +8,180 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     fontFamily: {
                         'inter': ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.8s ease-out',
+                        'slide-up': 'slideUp 0.6s ease-out',
+                        'scale-in': 'scaleIn 0.5s ease-out',
+                        'float': 'float 3s ease-in-out infinite',
+                        'button-pulse': 'buttonPulse 0.15s ease-out',
+                        'glow-pulse': 'glowPulse 2s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        scaleIn: {
+                            '0%': { opacity: '0', transform: 'scale(0.9)' },
+                            '100%': { opacity: '1', transform: 'scale(1)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        buttonPulse: {
+                            '0%': { transform: 'scale(1)' },
+                            '50%': { transform: 'scale(1.05)' },
+                            '100%': { transform: 'scale(1)' },
+                        },
+                        glowPulse: {
+                            '0%, 100%': { boxShadow: '0 0 20px rgba(59, 130, 246, 0.3)' },
+                            '50%': { boxShadow: '0 0 40px rgba(59, 130, 246, 0.6)' },
+                        },
+                    },
+                    colors: {
+                        dark: {
+                            primary: '#0f172a',
+                            secondary: '#1e293b',
+                            accent: '#3b82f6',
+                            text: '#e2e8f0',
+                            muted: '#94a3b8'
+                        }
+                    },
+                    backdropBlur: {
+                        xs: '2px',
+                        sm: '4px',
+                        md: '8px',
+                        lg: '12px',
+                        xl: '16px',
                     }
                 }
             }
         }
     </script>
+    <style>
+        body {
+            background-color: #000000;
+            min-height: 100vh;
+        }
+        .glass-card {
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .glass-nav {
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .glass-footer {
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .glow-text {
+            text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+        }
+        .glow-button {
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+        }
+        .glow-button:hover {
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+        }
+        .value-card {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .value-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+        }
+        .card-hover-effect {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover-effect:hover {
+            transform: translateY(-4px) scale(1.01);
+            box-shadow: 0 20px 40px -12px rgba(59, 130, 246, 0.2);
+        }
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        .scroll-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
-<body class="font-inter bg-gray-50">
+<body class="font-inter text-white">
     <!-- Navigation -->
-    <nav class="bg-white shadow-sm border-b">
+    <nav class="glass-nav shadow-2xl">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center">
-                    <a href="index.html" class="text-2xl font-bold text-blue-600">AutoBid</a>
+                    <a href="index.html" class="text-2xl font-bold text-blue-400 hover:scale-105 transition-transform duration-300 glow-text">AutoBid</a>
                 </div>
                 <div class="hidden md:flex space-x-8">
-                    <a href="index.html" class="text-gray-700 hover:text-blue-600">Home</a>
-                    <a href="auctions.html" class="text-gray-700 hover:text-blue-600">Auctions</a>
-                    <a href="sell.html" class="text-gray-700 hover:text-blue-600">Sell</a>
-                    <a href="about.html" class="text-gray-900 hover:text-blue-600 font-medium">About</a>
+                    <a href="index.html" class="text-gray-300 hover:text-blue-400 relative group transition-colors duration-300">
+                        Home
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 group-hover:w-full transition-all duration-300" style="box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);"></span>
+                    </a>
+                    <a href="auctions.html" class="text-gray-300 hover:text-blue-400 relative group transition-colors duration-300">
+                        Auctions
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 group-hover:w-full transition-all duration-300" style="box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);"></span>
+                    </a>
+                    <a href="sell.html" class="text-gray-300 hover:text-blue-400 relative group transition-colors duration-300">
+                        Sell
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 group-hover:w-full transition-all duration-300" style="box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);"></span>
+                    </a>
+                    <a href="about.html" class="text-white hover:text-blue-400 font-medium relative group transition-colors duration-300">
+                        About
+                        <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-blue-400" style="box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);"></span>
+                    </a>
                 </div>
                 <div class="flex items-center space-x-4">
-                    <a href="login.html" class="text-gray-700 hover:text-blue-600">Login</a>
-                    <a href="login.html" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">Register</a>
+                    <a href="login.html" class="text-gray-300 hover:text-blue-400 transition-colors duration-300">Login</a>
+                    <a href="login.html" class="bg-gradient-to-r from-blue-500 to-indigo-600 hover:brightness-110 text-white px-5 py-2 rounded-lg shadow-md transition hover:scale-105 hover:shadow-lg">Register</a>
                 </div>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 class="text-5xl font-bold mb-6">About AutoBid</h1>
-            <p class="text-xl">Connecting car enthusiasts with exceptional vehicles through transparent, trusted auctions</p>
+    <section class="bg-gradient-to-r from-blue-900/30 via-purple-900/20 to-blue-900/30 text-white py-20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-black/40"></div>
+        <div class="absolute inset-0">
+            <div class="absolute top-10 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
+            <div class="absolute bottom-10 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style="animation-delay: -1s;"></div>
+        </div>
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <h1 class="text-5xl font-bold mb-6 glow-text">About AutoBid</h1>
+            <p class="text-xl opacity-90">Connecting car enthusiasts with exceptional vehicles through transparent, trusted auctions</p>
         </div>
     </section>
 
     <!-- About Content -->
     <section class="py-16">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
-                <h2 class="text-3xl font-bold text-gray-900 mb-6">Our Story</h2>
-                <div class="prose prose-lg text-gray-700 space-y-6">
+            <div class="glass-card rounded-xl p-8 mb-12 card-hover-effect scroll-reveal">
+                <h2 class="text-3xl font-bold text-dark-text mb-6 animate-fade-in">Our Story</h2>
+                <div class="prose prose-lg text-dark-muted space-y-6">
                     <p>
                         Founded in 2019 by a team of automotive enthusiasts, AutoBid was born from a simple observation: 
                         the traditional car buying and selling experience was broken. Whether you were a collector looking 
@@ -74,83 +202,83 @@
             </div>
 
             <!-- Values -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-                <div class="bg-white rounded-xl shadow-lg p-8 text-center">
-                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 scroll-reveal">
+                <div class="value-card rounded-xl p-8 text-center transition duration-300 scroll-reveal">
+                    <div class="w-16 h-16 bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3">Trust & Transparency</h3>
-                    <p class="text-gray-600">Every listing is verified, every seller is vetted, and every transaction is protected by our comprehensive guarantee.</p>
+                    <h3 class="text-xl font-semibold mb-3 text-dark-text">Trust & Transparency</h3>
+                    <p class="text-dark-muted">Every listing is verified, every seller is vetted, and every transaction is protected by our comprehensive guarantee.</p>
                 </div>
-                <div class="bg-white rounded-xl shadow-lg p-8 text-center">
-                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="value-card rounded-xl p-8 text-center transition duration-300 scroll-reveal">
+                    <div class="w-16 h-16 bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3">Community First</h3>
-                    <p class="text-gray-600">We're more than a marketplace – we're a community of enthusiasts who share knowledge, stories, and passion.</p>
+                    <h3 class="text-xl font-semibold mb-3 text-dark-text">Community First</h3>
+                    <p class="text-dark-muted">We're more than a marketplace – we're a community of enthusiasts who share knowledge, stories, and passion.</p>
                 </div>
-                <div class="bg-white rounded-xl shadow-lg p-8 text-center">
-                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="value-card rounded-xl p-8 text-center transition duration-300 scroll-reveal">
+                    <div class="w-16 h-16 bg-purple-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3">Innovation</h3>
-                    <p class="text-gray-600">We continuously evolve our platform with cutting-edge technology to enhance the buying and selling experience.</p>
+                    <h3 class="text-xl font-semibold mb-3 text-dark-text">Innovation</h3>
+                    <p class="text-dark-muted">We continuously evolve our platform with cutting-edge technology to enhance the buying and selling experience.</p>
                 </div>
             </div>
 
             <!-- Contact Section -->
-            <div class="bg-white rounded-xl shadow-lg p-8">
-                <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Get in Touch</h2>
+            <div class="glass-card rounded-xl p-8 card-hover-effect scroll-reveal">
+                <h2 class="text-3xl font-bold text-dark-text mb-8 text-center animate-fade-in">Get in Touch</h2>
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
                     <!-- Contact Info -->
                     <div>
-                        <h3 class="text-xl font-semibold mb-6">Contact Information</h3>
+                        <h3 class="text-xl font-semibold mb-6 text-dark-text">Contact Information</h3>
                         <div class="space-y-4">
                             <div class="flex items-center space-x-3">
-                                <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-                                    <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <div class="w-10 h-10 bg-blue-900/30 rounded-full flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                                     </svg>
                                 </div>
                                 <div>
-                                    <p class="font-medium">Email</p>
-                                    <p class="text-gray-600">support@autobid.com</p>
+                                    <p class="font-medium text-dark-text">Email</p>
+                                    <p class="text-dark-muted">support@autobid.com</p>
                                 </div>
                             </div>
                             <div class="flex items-center space-x-3">
-                                <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
-                                    <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <div class="w-10 h-10 bg-green-900/30 rounded-full flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
                                     </svg>
                                 </div>
                                 <div>
-                                    <p class="font-medium">Phone</p>
-                                    <p class="text-gray-600">1-800-AUTO-BID</p>
+                                    <p class="font-medium text-dark-text">Phone</p>
+                                    <p class="text-dark-muted">1-800-AUTO-BID</p>
                                 </div>
                             </div>
                             <div class="flex items-center space-x-3">
-                                <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center">
-                                    <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <div class="w-10 h-10 bg-purple-900/30 rounded-full flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
                                     </svg>
                                 </div>
                                 <div>
-                                    <p class="font-medium">Address</p>
-                                    <p class="text-gray-600">123 Automotive Ave<br>Car City, CA 90210</p>
+                                    <p class="font-medium text-dark-text">Address</p>
+                                    <p class="text-dark-muted">123 Automotive Ave<br>Car City, CA 90210</p>
                                 </div>
                             </div>
                         </div>
                         
                         <div class="mt-8">
-                            <h4 class="font-semibold mb-4">Business Hours</h4>
-                            <div class="text-gray-600 space-y-1">
+                            <h4 class="font-semibold mb-4 text-dark-text">Business Hours</h4>
+                            <div class="text-dark-muted space-y-1">
                                 <p>Monday - Friday: 9:00 AM - 6:00 PM PST</p>
                                 <p>Saturday: 10:00 AM - 4:00 PM PST</p>
                                 <p>Sunday: Closed</p>
@@ -160,25 +288,25 @@
 
                     <!-- Contact Form -->
                     <div>
-                        <h3 class="text-xl font-semibold mb-6">Send us a Message</h3>
+                        <h3 class="text-xl font-semibold mb-6 text-dark-text">Send us a Message</h3>
                         <form class="space-y-4">
                             <div class="grid grid-cols-2 gap-4">
                                 <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">First Name</label>
-                                    <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                    <label class="block text-sm font-medium text-dark-muted mb-2">First Name</label>
+                                    <input type="text" class="w-full px-3 py-2 bg-dark-secondary border border-gray-800 rounded-lg focus:ring-2 focus:ring-dark-accent focus:border-dark-accent text-dark-text">
                                 </div>
                                 <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
-                                    <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                    <label class="block text-sm font-medium text-dark-muted mb-2">Last Name</label>
+                                    <input type="text" class="w-full px-3 py-2 bg-dark-secondary border border-gray-800 rounded-lg focus:ring-2 focus:ring-dark-accent focus:border-dark-accent text-dark-text">
                                 </div>
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                                <input type="email" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                <label class="block text-sm font-medium text-dark-muted mb-2">Email</label>
+                                <input type="email" class="w-full px-3 py-2 bg-dark-secondary border border-gray-800 rounded-lg focus:ring-2 focus:ring-dark-accent focus:border-dark-accent text-dark-text">
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Subject</label>
-                                <select class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                <label class="block text-sm font-medium text-dark-muted mb-2">Subject</label>
+                                <select class="w-full px-3 py-2 bg-dark-secondary border border-gray-800 rounded-lg focus:ring-2 focus:ring-dark-accent focus:border-dark-accent text-dark-text">
                                     <option>General Inquiry</option>
                                     <option>Buyer Support</option>
                                     <option>Seller Support</option>
@@ -187,10 +315,10 @@
                                 </select>
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Message</label>
-                                <textarea rows="4" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-none" placeholder="How can we help you?"></textarea>
+                                <label class="block text-sm font-medium text-dark-muted mb-2">Message</label>
+                                <textarea rows="4" class="w-full px-3 py-2 bg-dark-secondary border border-gray-800 rounded-lg focus:ring-2 focus:ring-dark-accent focus:border-dark-accent text-dark-text resize-none" placeholder="How can we help you?"></textarea>
                             </div>
-                            <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
+                            <button type="submit" class="w-full bg-gradient-to-r from-blue-500 to-indigo-600 hover:brightness-110 text-white py-3 rounded-lg font-semibold shadow-md transition hover:scale-105 hover:shadow-xl">
                                 Send Message
                             </button>
                         </form>
@@ -201,42 +329,66 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-white border-t py-12">
+    <footer class="glass-footer py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div>
-                    <h3 class="text-lg font-semibold mb-4">AutoBid</h3>
-                    <p class="text-gray-600">Premium car auctions for enthusiasts and collectors.</p>
+                    <h3 class="text-lg font-semibold mb-4 text-dark-text">AutoBid</h3>
+                    <p class="text-dark-muted">Premium car auctions for enthusiasts and collectors.</p>
                 </div>
                 <div>
-                    <h4 class="font-semibold mb-4">Buying</h4>
-                    <ul class="space-y-2 text-gray-600">
-                        <li><a href="auctions.html" class="hover:text-blue-600">Browse Auctions</a></li>
-                        <li><a href="#" class="hover:text-blue-600">How to Bid</a></li>
-                        <li><a href="#" class="hover:text-blue-600">Buyer Protection</a></li>
+                    <h4 class="font-semibold mb-4 text-dark-text">Buying</h4>
+                    <ul class="space-y-2 text-dark-muted">
+                        <li><a href="auctions.html" class="hover:text-dark-accent">Browse Auctions</a></li>
+                        <li><a href="#" class="hover:text-dark-accent">How to Bid</a></li>
+                        <li><a href="#" class="hover:text-dark-accent">Buyer Protection</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-semibold mb-4">Selling</h4>
-                    <ul class="space-y-2 text-gray-600">
-                        <li><a href="sell.html" class="hover:text-blue-600">List Your Car</a></li>
-                        <li><a href="#" class="hover:text-blue-600">Seller Guide</a></li>
-                        <li><a href="#" class="hover:text-blue-600">Fees</a></li>
+                    <h4 class="font-semibold mb-4 text-dark-text">Selling</h4>
+                    <ul class="space-y-2 text-dark-muted">
+                        <li><a href="sell.html" class="hover:text-dark-accent">List Your Car</a></li>
+                        <li><a href="#" class="hover:text-dark-accent">Seller Guide</a></li>
+                        <li><a href="#" class="hover:text-dark-accent">Fees</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-semibold mb-4">Support</h4>
-                    <ul class="space-y-2 text-gray-600">
-                        <li><a href="about.html" class="hover:text-blue-600">About Us</a></li>
-                        <li><a href="#" class="hover:text-blue-600">Contact</a></li>
-                        <li><a href="#" class="hover:text-blue-600">Help Center</a></li>
+                    <h4 class="font-semibold mb-4 text-dark-text">Support</h4>
+                    <ul class="space-y-2 text-dark-muted">
+                        <li><a href="about.html" class="hover:text-dark-accent">About Us</a></li>
+                        <li><a href="#" class="hover:text-dark-accent">Contact</a></li>
+                        <li><a href="#" class="hover:text-dark-accent">Help Center</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="border-t mt-8 pt-8 text-center text-gray-600">
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-dark-muted">
                 <p>&copy; 2024 AutoBid. All rights reserved.</p>
             </div>
         </div>
     </footer>
 </body>
 </html>
+    <script>
+        // Scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all scroll-reveal elements
+        document.addEventListener('DOMContentLoaded', () => {
+            const scrollElements = document.querySelectorAll('.scroll-reveal');
+            scrollElements.forEach((el, index) => {
+                el.style.animationDelay = `${index * 0.1}s`;
+                observer.observe(el);
+            });
+        });
+    </script>

@@ -12,42 +12,151 @@
                 extend: {
                     fontFamily: {
                         'inter': ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.8s ease-out',
+                        'slide-up': 'slideUp 0.6s ease-out',
+                        'scale-in': 'scaleIn 0.5s ease-out',
+                        'float': 'float 3s ease-in-out infinite',
+                        'glow-pulse': 'glowPulse 2s ease-in-out infinite',
+                        'button-pulse': 'buttonPulse 0.15s ease-out',
+                        'slide-in-left': 'slideInLeft 0.6s ease-out',
+                        'slide-in-right': 'slideInRight 0.6s ease-out',
+                        'bounce-gentle': 'bounceGentle 2s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        scaleIn: {
+                            '0%': { opacity: '0', transform: 'scale(0.9)' },
+                            '100%': { opacity: '1', transform: 'scale(1)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        glowPulse: {
+                            '0%, 100%': { boxShadow: '0 0 20px rgba(59, 130, 246, 0.3)' },
+                            '50%': { boxShadow: '0 0 40px rgba(59, 130, 246, 0.6)' },
+                        },
+                        buttonPulse: {
+                            '0%': { transform: 'scale(1)' },
+                            '50%': { transform: 'scale(1.05)' },
+                            '100%': { transform: 'scale(1)' },
+                        },
+                        slideInLeft: {
+                            '0%': { opacity: '0', transform: 'translateX(-50px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                        slideInRight: {
+                            '0%': { opacity: '0', transform: 'translateX(50px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                        bounceGentle: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-5px)' },
+                        },
                     }
                 }
             }
         }
     </script>
+    <style>
+        .glow-text {
+            text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+        }
+        .glow {
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+        }
+        .glow-button {
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+        }
+        .glow-button:hover {
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+        }
+        .glass-card {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .card-hover-effect {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover-effect:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px -12px rgba(59, 130, 246, 0.25);
+        }
+        .button-hover-effect {
+            transition: all 0.2s ease;
+        }
+        .button-hover-effect:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.4);
+        }
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        .scroll-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
-<body class="font-inter bg-gray-50">
+<body class="font-inter bg-black min-h-screen">
     <!-- Navigation -->
-    <nav class="bg-white shadow-sm border-b">
+    <nav class="bg-black/20 backdrop-blur-xl border-b border-white/10 sticky top-0 z-50 transition-all duration-300 shadow-2xl">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center">
-                    <h1 class="text-2xl font-bold text-blue-600">AutoBid</h1>
+                    <h1 class="text-2xl font-bold text-blue-400 hover:scale-105 transition-transform duration-300 cursor-pointer glow-text">AutoBid</h1>
                 </div>
                 <div class="hidden md:flex space-x-8">
-                    <a href="index.html" class="text-gray-900 hover:text-blue-600 font-medium">Home</a>
-                    <a href="auctions.html" class="text-gray-700 hover:text-blue-600">Auctions</a>
-                    <a href="sell.html" class="text-gray-700 hover:text-blue-600">Sell</a>
-                    <a href="about.html" class="text-gray-700 hover:text-blue-600">About</a>
+                    <a href="index.html" class="text-white hover:text-blue-400 font-medium relative group transition-colors duration-300">
+                        Home
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 group-hover:w-full transition-all duration-300 glow"></span>
+                    </a>
+                    <a href="auctions.html" class="text-gray-300 hover:text-blue-400 relative group transition-colors duration-300">
+                        Auctions
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 group-hover:w-full transition-all duration-300 glow"></span>
+                    </a>
+                    <a href="sell.html" class="text-gray-300 hover:text-blue-400 relative group transition-colors duration-300">
+                        Sell
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 group-hover:w-full transition-all duration-300 glow"></span>
+                    </a>
+                    <a href="about.html" class="text-gray-300 hover:text-blue-400 relative group transition-colors duration-300">
+                        About
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 group-hover:w-full transition-all duration-300 glow"></span>
+                    </a>
                 </div>
                 <div class="flex items-center space-x-4">
-                    <a href="login.html" class="text-gray-700 hover:text-blue-600">Login</a>
-                    <a href="login.html" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">Register</a>
+                    <a href="login.html" class="text-gray-300 hover:text-blue-400 transition-colors duration-300">Login</a>
+                    <a href="login.html" class="bg-gradient-to-r from-blue-500 to-indigo-600 hover:brightness-110 text-white px-5 py-2 rounded-lg shadow-md transition button-hover-effect hover:animate-button-pulse">Register</a>
                 </div>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 class="text-5xl font-bold mb-6">Premium Car Auctions</h1>
-            <p class="text-xl mb-8 max-w-2xl mx-auto">Discover exceptional vehicles from enthusiasts, collectors, and dealers. Bid with confidence on curated automotive gems.</p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="auctions.html" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">Browse Auctions</a>
-                <a href="sell.html" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition">Sell Your Car</a>
+    <section class="bg-gradient-to-r from-blue-900/30 via-purple-900/20 to-blue-900/30 text-white py-20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-black/40"></div>
+        <div class="absolute inset-0">
+            <div class="absolute top-10 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl animate-float"></div>
+            <div class="absolute bottom-10 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-float" style="animation-delay: -1.5s;"></div>
+            <div class="absolute top-1/2 left-1/2 w-64 h-64 bg-cyan-500/5 rounded-full blur-3xl animate-float" style="animation-delay: -3s;"></div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <h1 class="text-5xl font-bold mb-6 animate-fade-in">Premium Car Auctions</h1>
+            <p class="text-xl mb-8 max-w-2xl mx-auto animate-slide-up opacity-90">Discover exceptional vehicles from enthusiasts, collectors, and dealers. Bid with confidence on curated automotive gems.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center animate-scale-in">
+                <a href="auctions.html" class="bg-gradient-to-r from-blue-500 to-indigo-600 hover:brightness-110 text-white px-8 py-3 rounded-lg font-semibold shadow-md transition button-hover-effect hover:animate-button-pulse">Browse Auctions</a>
+                <a href="sell.html" class="bg-gradient-to-r from-blue-500 to-indigo-600 hover:brightness-110 text-white px-8 py-3 rounded-lg font-semibold shadow-md transition button-hover-effect hover:animate-button-pulse">Sell Your Car</a>
             </div>
         </div>
     </section>
@@ -55,71 +164,74 @@
     <!-- Featured Auctions -->
     <section class="py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">Featured Auctions</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">Hand-picked vehicles ending soon. Don't miss your chance to own these exceptional cars.</p>
+            <div class="text-center mb-12 animate-fade-in">
+                <h2 class="text-3xl font-bold text-white mb-4 animate-slide-up glow-text">Featured Auctions</h2>
+                <p class="text-gray-300 max-w-2xl mx-auto animate-slide-up" style="animation-delay: 0.2s;">Hand-picked vehicles ending soon. Don't miss your chance to own these exceptional cars.</p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Car Card 1 -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                    <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?w=400&h=250&fit=crop" alt="2020 Porsche 911" class="w-full h-48 object-cover">
-                        <div class="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                <div class="bg-black/40 backdrop-blur-xl border border-white/10 rounded-xl shadow-2xl overflow-hidden group animate-scale-in glass-card card-hover-effect scroll-reveal flex flex-col h-full">
+                    <div class="relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?w=400&h=250&fit=crop" alt="2020 Porsche 911" class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <span class="absolute top-4 left-4 bg-red-500/80 text-white text-xs px-3 py-1 rounded-full shadow-sm backdrop-blur">
                             2d 14h left
-                        </div>
+                        </span>
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">2020 Porsche 911 Carrera S</h3>
-                        <p class="text-gray-600 mb-4">15,420 miles • Manual • Excellent condition</p>
-                        <div class="flex justify-between items-center">
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-semibold mb-2 text-white group-hover:text-blue-400 transition-colors duration-300">2020 Porsche 911 Carrera S</h3>
+                        <p class="text-gray-300 mb-4 flex-grow">15,420 miles • Manual • Excellent condition</p>
+                        <div class="flex justify-between items-center mt-auto">
                             <div>
-                                <p class="text-sm text-gray-500">Current bid</p>
-                                <p class="text-2xl font-bold text-green-600">$89,500</p>
+                                <p class="text-sm text-gray-400">Current bid</p>
+                                <p class="text-2xl font-bold text-green-400 group-hover:scale-105 transition-transform duration-300">$89,500</p>
                             </div>
-                            <a href="auction-detail.html" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">View Auction</a>
+                            <a href="auction-detail.html" class="bg-gradient-to-r from-blue-500 to-indigo-600 hover:brightness-110 text-white px-5 py-2 rounded-lg shadow-md transition button-hover-effect hover:animate-button-pulse whitespace-nowrap">View Auction</a>
                         </div>
                     </div>
                 </div>
 
                 <!-- Car Card 2 -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                    <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=400&h=250&fit=crop" alt="2019 BMW M3" class="w-full h-48 object-cover">
-                        <div class="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                <div class="bg-black/40 backdrop-blur-xl border border-white/10 rounded-xl shadow-2xl overflow-hidden group animate-scale-in glass-card card-hover-effect scroll-reveal flex flex-col h-full" style="animation-delay: 0.2s;">
+                    <div class="relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=400&h=250&fit=crop" alt="2019 BMW M3" class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <span class="absolute top-4 left-4 bg-red-500/80 text-white text-xs px-3 py-1 rounded-full shadow-sm backdrop-blur">
                             1d 8h left
-                        </div>
+                        </span>
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">2019 BMW M3 Competition</h3>
-                        <p class="text-gray-600 mb-4">22,100 miles • Automatic • Very good condition</p>
-                        <div class="flex justify-between items-center">
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-semibold mb-2 text-white group-hover:text-blue-400 transition-colors duration-300">2019 BMW M3 Competition</h3>
+                        <p class="text-gray-300 mb-4 flex-grow">22,100 miles • Automatic • Very good condition</p>
+                        <div class="flex justify-between items-center mt-auto">
                             <div>
-                                <p class="text-sm text-gray-500">Current bid</p>
-                                <p class="text-2xl font-bold text-green-600">$52,750</p>
+                                <p class="text-sm text-gray-400">Current bid</p>
+                                <p class="text-2xl font-bold text-green-400 group-hover:scale-105 transition-transform duration-300">$52,750</p>
                             </div>
-                            <a href="auction-detail.html" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">View Auction</a>
+                            <a href="auction-detail.html" class="bg-gradient-to-r from-blue-500 to-indigo-600 hover:brightness-110 text-white px-5 py-2 rounded-lg shadow-md transition button-hover-effect hover:animate-button-pulse whitespace-nowrap">View Auction</a>
                         </div>
                     </div>
                 </div>
 
                 <!-- Car Card 3 -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                    <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=400&h=250&fit=crop" alt="2021 Tesla Model S" class="w-full h-48 object-cover">
-                        <div class="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                <div class="bg-black/40 backdrop-blur-xl border border-white/10 rounded-xl shadow-2xl overflow-hidden group animate-scale-in glass-card card-hover-effect scroll-reveal flex flex-col h-full" style="animation-delay: 0.4s;">
+                    <div class="relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=400&h=250&fit=crop" alt="2021 Tesla Model S" class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <span class="absolute top-4 left-4 bg-red-500/80 text-white text-xs px-3 py-1 rounded-full shadow-sm backdrop-blur">
                             3d 2h left
-                        </div>
+                        </span>
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">2021 Tesla Model S Plaid</h3>
-                        <p class="text-gray-600 mb-4">8,900 miles • Electric • Excellent condition</p>
-                        <div class="flex justify-between items-center">
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-semibold mb-2 text-white group-hover:text-blue-400 transition-colors duration-300">2021 Tesla Model S Plaid</h3>
+                        <p class="text-gray-300 mb-4 flex-grow">8,900 miles • Electric • Excellent condition</p>
+                        <div class="flex justify-between items-center mt-auto">
                             <div>
-                                <p class="text-sm text-gray-500">Current bid</p>
-                                <p class="text-2xl font-bold text-green-600">$95,000</p>
+                                <p class="text-sm text-gray-400">Current bid</p>
+                                <p class="text-2xl font-bold text-green-400 group-hover:scale-105 transition-transform duration-300">$95,000</p>
                             </div>
-                            <a href="auction-detail.html" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">View Auction</a>
+                            <a href="auction-detail.html" class="bg-gradient-to-r from-blue-500 to-indigo-600 hover:brightness-110 text-white px-5 py-2 rounded-lg shadow-md transition button-hover-effect hover:animate-button-pulse whitespace-nowrap">View Auction</a>
                         </div>
                     </div>
                 </div>
@@ -128,54 +240,87 @@
     </section>
 
     <!-- Call to Action -->
-    <section class="bg-gray-900 text-white py-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl font-bold mb-4">Ready to Start Bidding?</h2>
-            <p class="text-xl mb-8 max-w-2xl mx-auto">Join thousands of car enthusiasts buying and selling exceptional vehicles.</p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="login.html" class="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">Create Account</a>
-                <a href="sell.html" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-gray-900 transition">List Your Car</a>
+    <section class="bg-gradient-to-r from-black via-gray-900/50 to-black text-white py-16 relative overflow-hidden">
+        <div class="absolute inset-0">
+            <div class="absolute top-0 left-1/4 w-64 h-64 bg-blue-500/20 rounded-full blur-3xl animate-float"></div>
+            <div class="absolute bottom-0 right-1/4 w-80 h-80 bg-purple-500/20 rounded-full blur-3xl animate-float" style="animation-delay: -2s;"></div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <h2 class="text-3xl font-bold mb-4 animate-fade-in">Ready to Start Bidding?</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto animate-slide-up opacity-90">Join thousands of car enthusiasts buying and selling exceptional vehicles.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center animate-scale-in">
+                <a href="login.html" class="bg-gradient-to-r from-blue-500 to-indigo-600 hover:brightness-110 text-white px-8 py-3 rounded-lg font-semibold shadow-md transition button-hover-effect hover:animate-button-pulse">Create Account</a>
+                <a href="sell.html" class="bg-gradient-to-r from-blue-500 to-indigo-600 hover:brightness-110 text-white px-8 py-3 rounded-lg font-semibold shadow-md transition button-hover-effect hover:animate-button-pulse">List Your Car</a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-white border-t py-12">
+    <footer class="bg-black/40 backdrop-blur-xl border-t border-white/10 py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div>
-                    <h3 class="text-lg font-semibold mb-4">AutoBid</h3>
-                    <p class="text-gray-600">Premium car auctions for enthusiasts and collectors.</p>
+                    <h3 class="text-lg font-semibold mb-4 text-blue-400 glow-text">AutoBid</h3>
+                    <p class="text-gray-300">Premium car auctions for enthusiasts and collectors.</p>
                 </div>
                 <div>
-                    <h4 class="font-semibold mb-4">Buying</h4>
-                    <ul class="space-y-2 text-gray-600">
-                        <li><a href="auctions.html" class="hover:text-blue-600">Browse Auctions</a></li>
-                        <li><a href="#" class="hover:text-blue-600">How to Bid</a></li>
-                        <li><a href="#" class="hover:text-blue-600">Buyer Protection</a></li>
+                    <h4 class="font-semibold mb-4 text-white">Buying</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="auctions.html" class="hover:text-blue-400 transition-colors duration-300">Browse Auctions</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition-colors duration-300">How to Bid</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition-colors duration-300">Buyer Protection</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-semibold mb-4">Selling</h4>
-                    <ul class="space-y-2 text-gray-600">
-                        <li><a href="sell.html" class="hover:text-blue-600">List Your Car</a></li>
-                        <li><a href="#" class="hover:text-blue-600">Seller Guide</a></li>
-                        <li><a href="#" class="hover:text-blue-600">Fees</a></li>
+                    <h4 class="font-semibold mb-4 text-white">Selling</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="sell.html" class="hover:text-blue-400 transition-colors duration-300">List Your Car</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition-colors duration-300">Seller Guide</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition-colors duration-300">Fees</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-semibold mb-4">Support</h4>
-                    <ul class="space-y-2 text-gray-600">
-                        <li><a href="about.html" class="hover:text-blue-600">About Us</a></li>
-                        <li><a href="contact.html" class="hover:text-blue-600">Contact</a></li>
-                        <li><a href="#" class="hover:text-blue-600">Help Center</a></li>
+                    <h4 class="font-semibold mb-4 text-white">Support</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="about.html" class="hover:text-blue-400 transition-colors duration-300">About Us</a></li>
+                        <li><a href="contact.html" class="hover:text-blue-400 transition-colors duration-300">Contact</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition-colors duration-300">Help Center</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="border-t mt-8 pt-8 text-center text-gray-600">
+            <div class="border-t border-white/10 mt-8 pt-8 text-center text-gray-400">
                 <p>&copy; 2024 AutoBid. All rights reserved.</p>
             </div>
         </div>
     </footer>
 </body>
 </html>
+    <script>
+        // Scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all scroll-reveal elements
+        document.addEventListener('DOMContentLoaded', () => {
+            const scrollElements = document.querySelectorAll('.scroll-reveal');
+            scrollElements.forEach(el => observer.observe(el));
+        });
+
+        // Add stagger effect to card animations
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.card-hover-effect');
+            cards.forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.1}s`;
+            });
+        });
+    </script>
